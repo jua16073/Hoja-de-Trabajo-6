@@ -1,5 +1,6 @@
 import java.util.*;
 public class Factory {
+	// Se crea el tipo de lista segun el usuario desee
 	public AbstractSet getCollection(int lol){
 		AbstractSet seleccionado=null;
 		switch(lol){

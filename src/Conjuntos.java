@@ -6,23 +6,13 @@ public class Conjuntos {
 	AbstractSet<String> listaJava;
 	AbstractSet<String> listaTotal;
 	Factory sel= new Factory();
-	/*
-	Iterator it;
-	Iterator it1;
-	Iterator it2;
-	Iterator it3;
-	*/
+	
 	public Conjuntos(int implementacion){
 		listaAndroid = sel.getCollection(implementacion);
 		listaiOS= sel.getCollection(implementacion);
 		listaJava= sel.getCollection(implementacion);
 		listaTotal= sel.getCollection(implementacion);
-		/*
-		it = listaTotal.iterator();
-		it1= listaAndroid.iterator();
-		it2= listaiOS.iterator();
-		it3= listaJava.iterator();
-		*/
+		
 	}
 	
 	public void add(String nombre, String num){
@@ -116,8 +106,5 @@ public class Conjuntos {
 		}
 		return cadena;
 	}
-	
-	
-	
 	
 }
