@@ -1,4 +1,4 @@
-
+import java.util.*;
 public class Factory {
 	public Collection getCollection(int lol){
 		Collection seleccionado=null;
