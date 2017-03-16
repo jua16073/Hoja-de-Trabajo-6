@@ -1,24 +1,28 @@
 import java.util.*;
 
 public class Conjuntos {
-	Collection listaAndroid;
-	Collection listaiOS;
-	Collection listaJava;
-	Collection listaTotal;
-	Factory sel;
+	AbstractSet<String> listaAndroid;
+	AbstractSet<String> listaiOS;
+	AbstractSet<String> listaJava;
+	AbstractSet<String> listaTotal;
+	Factory sel= new Factory();
+	/*
 	Iterator it;
 	Iterator it1;
 	Iterator it2;
 	Iterator it3;
+	*/
 	public Conjuntos(int implementacion){
-		listaAndroid= sel.getCollection(implementacion);
+		listaAndroid = sel.getCollection(implementacion);
 		listaiOS= sel.getCollection(implementacion);
 		listaJava= sel.getCollection(implementacion);
 		listaTotal= sel.getCollection(implementacion);
+		/*
 		it = listaTotal.iterator();
 		it1= listaAndroid.iterator();
 		it2= listaiOS.iterator();
 		it3= listaJava.iterator();
+		*/
 	}
 	
 	public void add(String nombre, String num){
@@ -31,16 +35,86 @@ public class Conjuntos {
 		if(num.contains("3")){
 			listaAndroid.add(nombre);
 		}
+		listaTotal.add(nombre);
 	}
 	
 	public int tres(){
+		Iterator<String> it = listaTotal.iterator();
 		int x=0;
 		while (it.hasNext()){
-			if (listaAndroid.contains(it) && listaiOS.contains(it) && listaJava.contains(it)){
+			Object nombre= it.next();
+			if (listaAndroid.contains(nombre) && listaiOS.contains(nombre) && listaJava.contains(nombre)){
 				x++;
 			}
 		}
-		
+		return x;
+	}
+	
+	public int NoAndroid(){
+		Iterator<String> it = listaTotal.iterator();
+		int x=0;
+		while (it.hasNext()){
+			Object nombre= it.next();
+			if (!listaAndroid.contains(nombre) && listaJava.contains(nombre)){
+				System.out.println(nombre);
+				x++;
+			}
+		}
+		return x;
+	}
+	
+	public int noJava(){
+		Iterator<String> it = listaTotal.iterator();
+		int x=0;
+		while (it.hasNext()){
+			Object nombre= it.next();
+			if (listaAndroid.contains(nombre) && listaiOS.contains(nombre) && !listaJava.contains(nombre)){
+				System.out.println(nombre);
+				x++;
+			}
+		}
+		return x;
+	}
+	
+	public int orNoJava(){
+		Iterator<String> it = listaTotal.iterator();
+		int x=0;
+		while (it.hasNext()){
+			Object nombre= it.next();
+			if ((listaAndroid.contains(nombre) || listaiOS.contains(nombre)) && !listaJava.contains(nombre)){
+				System.out.println(nombre);
+				x++;
+			}
+		}
+		return x;
+	}
+	
+	public boolean sub(){
+		Iterator<String> it = listaTotal.iterator();
+		int x=0;
+		while (it.hasNext()){
+			Object nombre= it.next();
+			if (listaAndroid.contains(nombre) && listaJava.contains(nombre)){
+				x++;
+			}
+		}
+		if ( x == listaAndroid.size())
+			return true;
+		return false;
+	}
+	
+	public String Grande(){
+		String cadena="";
+		if (listaAndroid.size()>listaiOS.size() && listaAndroid.size()> listaJava.size()){
+			cadena= "Android" + "/nlos desarrolladores son: "+ listaAndroid;
+		}
+		if (listaJava.size()>listaiOS.size() && listaJava.size()> listaAndroid.size()){
+			cadena= "Java" + "/nlos desarrolladores son: "+ listaJava;
+		}	
+		if (listaiOS.size()>listaJava.size() && listaiOS.size()> listaAndroid.size()){
+			cadena= "iOS" + "\nlos desarrolladores son: "+ listaiOS;
+		}
+		return cadena;
 	}
 	
 	

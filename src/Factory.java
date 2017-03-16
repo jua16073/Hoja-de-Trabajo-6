@@ -1,18 +1,18 @@
 import java.util.*;
 public class Factory {
-	public Collection getCollection(int lol){
-		Collection seleccionado=null;
+	public AbstractSet getCollection(int lol){
+		AbstractSet seleccionado=null;
 		switch(lol){
 		case 1:{
-			seleccionado= new HashSet();
+			seleccionado= new HashSet<String>();
 			break;
 		}
 		case 2:{
-			seleccionado= new TreeSet();
+			seleccionado= new TreeSet<String>();
 			break;
 		}
 		case 3:{
-			seleccionado= new LinkedHashSet();
+			seleccionado= new LinkedHashSet<String>();
 			break;
 		}
 		}
